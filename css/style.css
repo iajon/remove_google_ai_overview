@@ -1,0 +1,116 @@
+:root {
+  --background-light: #ffffff;
+  --background-dark: #403c3c;
+  --divider: #6e6868;
+  --default-margin: 10px;
+  --default-padding: 10px;
+  --slider-bg-on: #187fd0;
+  --slider-bg-off: #CCCCCC;
+  --slider: #ffffff;
+}
+
+body {
+  min-width: 250px;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--background-light);
+    color: black;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--background-dark);
+    color: white;
+  }
+}
+
+.hr {
+  border-top: 1px solid;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--default-margin);
+}
+
+.header-text {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.header-icon {
+  content: url(../images/toolbar-icon.svg);
+  width: 24px;
+  height: 24px;
+}
+
+.inline-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--default-padding);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--slider-bg-off);
+  border-radius: 17px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: var(--slider);
+  border-radius: 50%;
+}
+
+/* Enables smooth transitions to be added using a class */
+.slider.smooth-transition, .slider.smooth-transition:before {
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--slider-bg-on);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--slider-bg-on);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}

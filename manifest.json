@@ -1,0 +1,27 @@
+{
+  "name": "Remove Google AI overview",
+  "description": "Removes the AI overview from Google search results",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/toolbar-icon.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "scripts/content.js"
+      ],
+      "matches": [
+        "https://google.com/*",
+        "https://www.google.com/*"
+      ]
+    }
+  ]
+}
